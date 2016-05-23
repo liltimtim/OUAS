@@ -9,28 +9,33 @@
 import XCTest
 @testable import OUAS
 
-class OUASTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+class GameStoreTests: XCTestCase {
+    func testCreateNewGameRoom() {
+        let exp = expectationWithDescription("Create new game room")
+        GameStore.shared.currentPlayer = CurrentPlayer(gamerTag: "liltimtim")
+        GameStore.shared.createGame(withHost: GameStore.shared.currentPlayer.gamerTag!) { (gameRoom, error) in
+            XCTAssertNotNil(gameRoom)
+            XCTAssertNil(error)
+            exp.fulfill()
         }
+        waitForExpectationsWithTimeout(10, handler: nil)
     }
     
+    func testGetAvailableGames() {
+        let exp = expectationWithDescription("Get available game lobby rooms")
+        GameStore.shared.currentPlayer = CurrentPlayer(gamerTag: "liltimtim")
+        GameStore.shared.getAvailableGames { (rooms, error) in
+            XCTAssertNotNil(rooms)
+            XCTAssertNil(error)
+            
+            print(rooms?.count)
+            for room in rooms! {
+                print(room.id)
+                XCTAssertNotNil(room.id)
+                XCTAssertNotNil(room.host?)
+            }
+            exp.fulfill()
+        }
+        waitForExpectationsWithTimeout(10, handler: nil)
+    }
 }

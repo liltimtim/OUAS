@@ -10,9 +10,21 @@ import Foundation
 
 class GameRoom : NSObject {
     private(set) var id:String?
-    private(set) var players : [Player]?
-    private(set) var current_player:Player?
+    private(set) var authorizedPlayers:[Player]?
+    private(set) var currentPlayer:Player?
     private(set) var story_content : [StoryContent]?
+    var accessCode:Int?
+    private(set) var host:String?
+    init(withRoomID id:String) {
+        super.init()
+        self.id = id
+    }
     
+    func getGameContent(completion:(content:[StoryContent], error:NSError?)->Void) {
+        
+    }
     
+    func updateContent(withNewContent content:StoryContent, completion:(success:Bool, error:NSError?)->Void) {
+        
+    }
 }

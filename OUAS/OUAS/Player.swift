@@ -7,12 +7,17 @@
 //
 
 import Foundation
+import Parse
 
 class Player: NSObject {
-    private(set) var gamerTag:String?
+    private(set) var parseObject:PFUser!
     
-    required init ( gamerTag:String ) {
-        super.init()
-        self.gamerTag = gamerTag
+    init ( withParseObject object:PFUser) {
+        self.parseObject = object
+    }
+    
+    func getFriends(completion:(friends:[Player], error:NSError?)->Void) {
+        let query = PFQuery(className: "Friends")
+        completion(friends: [Player](), error: NSError(domain: "Player", code: 0, userInfo: ["error":"method incomplete"]))
     }
 }

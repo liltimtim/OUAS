@@ -9,5 +9,6 @@
 import Foundation
 
 class StoryContent: NSObject {
-    
+    var content:String?
+    var postedOn:NSDate?
 }
