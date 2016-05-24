@@ -21,10 +21,10 @@ class GameStore: NSObject {
         PFUser.logInWithUsernameInBackground(username, password: password) { (user, error) in
             self.currentUser = user
             
-            if user?.objectId != nil && PFInstallation.currentInstallation().deviceToken != nil {
+            if user?.objectId != nil {
                 let tokenObject = PFObject(className: "DeviceTokens")
                 tokenObject["user_id"] = user!.objectId!
-                tokenObject["deviceToken"] = PFInstallation.currentInstallation().deviceToken!
+                tokenObject["deviceToken"] = PFInstallation.currentInstallation()
                 tokenObject.saveInBackground()
             }
             completion(user: user, error: error)
