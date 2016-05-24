@@ -23,7 +23,7 @@ class GameStore: NSObject {
             
             if user?.objectId != nil && PFInstallation.currentInstallation().deviceToken != nil {
                 let tokenObject = PFObject(className: "DeviceTokens")
-                tokenObject["user"] = user!.objectId!
+                tokenObject["user_id"] = user!.objectId!
                 tokenObject["deviceToken"] = PFInstallation.currentInstallation().deviceToken!
                 tokenObject.saveInBackground()
             }
