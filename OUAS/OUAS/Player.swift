@@ -8,16 +8,26 @@
 
 import Foundation
 import Parse
-
 class Player: NSObject {
-    private(set) var parseObject:PFUser!
-    
-    init ( withParseObject object:PFUser) {
-        self.parseObject = object
+    private(set) var username:String?
+    private(set) var id:String?
+    private var playerObject:PFUser!
+    init (withUsername username:String, withObjectID id:String) {
+        self.username = username
+        self.id = id
+        playerObject = PFUser()
     }
     
-    func getFriends(completion:(friends:[Player], error:NSError?)->Void) {
-        let query = PFQuery(className: "Friends")
-        completion(friends: [Player](), error: NSError(domain: "Player", code: 0, userInfo: ["error":"method incomplete"]))
+    func toPFObject() -> PFUser {
+        print(playerObject)
+        return playerObject
+    }
+    
+    static func fromPFObject(object:PFObject) -> Player? {
+        guard let playerObject = object as? PFUser else { return nil }
+        guard let username = playerObject.username, id = object.objectId else { return nil }
+        let player = Player(withUsername: username, withObjectID: id)
+        player.playerObject = playerObject
+        return player
     }
 }
