@@ -108,10 +108,10 @@
             </objects>
             <point key="canvasLocation" x="1362" y="591"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Invite Friends Table View-->
         <scene sceneID="q8r-L5-DbD">
             <objects>
-                <tableViewController id="SkQ-Yz-CzB" sceneMemberID="viewController">
+                <tableViewController id="SkQ-Yz-CzB" customClass="InviteFriendsTableView" customModule="OUAS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1HH-Zh-vTA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

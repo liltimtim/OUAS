@@ -1,18 +1,17 @@
 //
-//  ActiveGameCell.swift
+//  FriendCell.swift
 //  OUAS
 //
-//  Created by Timothy Barrett on 5/23/16.
+//  Created by Timothy Barrett on 5/24/16.
 //  Copyright © 2016 Timothy Barrett. All rights reserved.
 //
 
 import UIKit
 
-class ActiveGameCell: UITableViewCell {
-    @IBOutlet weak var currentPlayer: UILabel!
-    @IBOutlet weak var pageCount: UILabel!
-    static let reuseIdentifier: String = "ActiveGameCell"
-    static let storyboardName: String = "ActiveGameCell"
+class FriendCell: UITableViewCell {
+    @IBOutlet weak var friendLabel: UILabel!
+    static let reuseIdentifier: String = "FriendCell"
+    static let storyboardName: String = "FriendCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

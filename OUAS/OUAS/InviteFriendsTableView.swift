@@ -9,15 +9,15 @@
 import UIKit
 
 class InviteFriendsTableView: UITableViewController {
-
+    private var players = [Player]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        tableView.registerNib(UINib(nibName: FriendCell.storyboardName, bundle: nil), forCellReuseIdentifier: FriendCell.reuseIdentifier)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.refreshUsers()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,15 +29,28 @@ class InviteFriendsTableView: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return players.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(FriendCell.reuseIdentifier, forIndexPath: indexPath) as! FriendCell
+        cell.friendLabel.text = players[indexPath.row].username
+        return cell
     }
     
     private func refreshUsers() {
-        
+        GameStore.shared.findPlayers { (players, error) in
+            if error == nil && players != nil {
+                dispatch_async(dispatch_get_main_queue(), { 
+                    self.players = players!
+                    self.tableView.reloadData()
+                })
+            }
+        }
     }
 }
