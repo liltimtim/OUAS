@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // init Parse
         Parse.initializeWithConfiguration(ParseClientConfiguration(block: { (configs) in
-            configs.applicationId = "OUAS"
+            configs.applicationId = "OnceUponAStory"
             configs.server = "https://onceuponastory.herokuapp.com/parse"
         }))
         return true
