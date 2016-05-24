@@ -43,6 +43,12 @@ class InviteFriendsTableView: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedPlayer = players[indexPath.row]
+        // TODO: Invite player to game and start game
+        
+    }
+    
     private func refreshUsers() {
         GameStore.shared.findPlayers { (players, error) in
             if error == nil && players != nil {
