@@ -46,16 +46,37 @@ class GameStore: NSObject {
     */
     
     func createGame(withOwner owner:Player, completion:(gameObject:GameRoom?, error:NSError?)->Void) {
-        let pfClass = PFObject(className: "ActiveGames")
-        pfClass["owner"] = owner.toPFObject()
-        pfClass.saveInBackgroundWithBlock { (success, error) in
-            print("create game error: \(error)")
-            if success && error == nil {
-                completion(gameObject: GameRoom.fromPFObject(pfClass), error: nil)
+        let newRoom = GameRoom(withOwner: owner)
+        let object = newRoom.toPFObject()
+        print(object)
+        object.saveInBackgroundWithBlock { (result, error) in
+            if result {
+                completion(gameObject: newRoom, error: nil)
             } else {
                 completion(gameObject: nil, error: error)
             }
         }
+    }
+    
+    func findPlayers(completion:(players:[Player]?, error:NSError?)->Void) {
+        let query = PFUser.query()
+        query?.findObjectsInBackgroundWithBlock({ (objects, error) in
+            if error == nil {
+                if objects != nil {
+                    var players = [Player]()
+                    for player in objects! {
+                        if let aPlayer = Player.fromPFObject(player) {
+                            players.append(aPlayer)
+                        }
+                    }
+                    completion(players: players, error: nil)
+                } else {
+                    completion(players: nil, error: nil)
+                }
+            } else {
+                completion(players: nil, error: error)
+            }
+        })
     }
     
     func invitePlayer(withUsername username:String, completion:(player:Player?, error:NSError?)->Void) {

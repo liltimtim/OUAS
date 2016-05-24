@@ -11,12 +11,10 @@ import Parse
 class GameRoom: NSObject {
     private(set) var owner:Player!
     private(set) var oponent:Player?
-    private(set) var id:String!
     private(set) var gameActive:Bool = true
     private var gameRoomObject:PFObject!
-    init ( withOwner owner:Player, withObjectID id:String) {
+    init ( withOwner owner:Player ) {
         self.owner = owner
-        self.id = id
         gameRoomObject = PFObject(className: "GameRoom")
         self.gameActive = true
     }
@@ -24,9 +22,8 @@ class GameRoom: NSObject {
     static func fromPFObject(object:PFObject) -> GameRoom? {
         guard let ownerObject = object["owner"] as? PFObject else { return nil }
         guard let player = Player.fromPFObject(ownerObject) else { return nil }
-        guard let id = object.objectId else { return nil }
         guard let gameActive = object.objectForKey("game_active") as? Bool else { return nil }
-        let gameRoom = GameRoom(withOwner: player, withObjectID: id)
+        let gameRoom = GameRoom(withOwner: player)
         gameRoom.gameActive = gameActive
         gameRoom.gameRoomObject = object
         return gameRoom
@@ -56,11 +53,40 @@ class GameRoom: NSObject {
         }
     }
     
+    func getGameContent(completion:(content:[GameContent]?, error:NSError?)->Void) {
+        if gameRoomObject.objectId != nil {
+            let query = PFQuery(className: "GameContent")
+            query.whereKey("game_room_id", equalTo: gameRoomObject.objectId!)
+            query.findObjectsInBackgroundWithBlock({ (objects, error) in
+                if error == nil {
+                    if objects != nil {
+                        var gameRoomContents = [GameContent]()
+                        for object in objects! {
+                            if let object = GameContent.fromPFObject(object) {
+                                gameRoomContents.append(object)
+                            }
+                        }
+                        completion(content: gameRoomContents, error: nil)
+                    } else {
+                        completion(content: nil, error: nil)
+                    }
+                } else {
+                    completion(content: nil, error: error)
+                }
+            })
+            
+        } else {
+            completion(content: nil, error: NSError(domain: "GameRoom", code: 0, userInfo: ["error":"Game Room does not have an object ID"]))
+        }
+        
+    }
+    
     func toPFObject() -> PFObject {
         let object = self.gameRoomObject
         object["owner"] = owner.toPFObject()
-        object["id"] = id
-        object["oponent"] = oponent?.toPFObject()
+        if oponent != nil {
+            object["oponent"] = oponent!.toPFObject()
+        }
         object["game_active"] = gameActive
         return object
     }

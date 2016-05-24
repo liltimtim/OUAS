@@ -50,6 +50,31 @@ class GameRoomTests : XCTestCase {
         waitForExpectationsWithTimeout(40, handler: nil)
     }
     
+    func testCreateGameRoomAddContentVerifyContentAdded() {
+        let exp = expectationWithDescription("Create a game and add content")
+        GameStore.shared.authenticate(withUsername: "liltimtim", withPassword: "password1") { (user, error) in
+            XCTAssertNotNil(user)
+            XCTAssertNil(error)
+            print(error)
+            let player = Player.fromPFObject(user!)!
+            GameStore.shared.createGame(withOwner: player, completion: { (gameObject, error) in
+                XCTAssertNotNil(gameObject)
+                XCTAssertNil(error)
+                print(gameObject)
+                gameObject!.postNewContent(withContent: "Hello world content", withContentOwner: user!, completion: { (success, error) in
+                    XCTAssertTrue(success)
+                    XCTAssertNil(error)
+                    gameObject?.getGameContent({ (content, error) in
+                        XCTAssertNotNil(content)
+                        XCTAssertGreaterThan(content!.count, 0)
+                        exp.fulfill()
+                    })
+                })
+            })
+        }
+        waitForExpectationsWithTimeout(40, handler: nil)
+    }
+    
     func testCreateGameAddOpponent() {
         let exp = expectationWithDescription("Create a game and add opponent")
         GameStore.shared.authenticate(withUsername: "liltimtim", withPassword: "password1") { (user, error) in
@@ -106,6 +131,17 @@ class GameRoomTests : XCTestCase {
         GameStore.shared.signUp(withUsername: "liltimtim", withEmail: "liltimtim@gmail.com", withPassword: "password1") { (user, error) in
             XCTAssertNotNil(user)
             XCTAssertNil(error)
+            exp.fulfill()
+        }
+        waitForExpectationsWithTimeout(10, handler: nil)
+    }
+    
+    func testFindAvailableUsers() {
+        let exp = expectationWithDescription("Get available Users")
+        GameStore.shared.findPlayers { (players, error) in
+            XCTAssertNotNil(players)
+            XCTAssertNil(error)
+            XCTAssertGreaterThan(players!.count, 0)
             exp.fulfill()
         }
         waitForExpectationsWithTimeout(10, handler: nil)
