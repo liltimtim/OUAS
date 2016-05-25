@@ -17,6 +17,8 @@
 		67F2192D1CF528EF00313047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F2192C1CF528EF00313047 /* Main.storyboard */; };
 		67F219331CF52DD200313047 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F219321CF52DD200313047 /* GameStore.swift */; };
 		67F219341CF52DD200313047 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F219321CF52DD200313047 /* GameStore.swift */; };
+		67F219361CF5300C00313047 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F219351CF5300C00313047 /* Game.swift */; };
+		67F219371CF5300C00313047 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F219351CF5300C00313047 /* Game.swift */; };
 		C4994F13CEA85A7A42F185F3 /* Pods_OUASTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C20F86D27D9C5ADCD90B41B /* Pods_OUASTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,7 @@
 		674CEF5C1CD0516200AD084D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67F2192C1CF528EF00313047 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		67F219321CF52DD200313047 /* GameStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStore.swift; sourceTree = "<group>"; };
+		67F219351CF5300C00313047 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		6C20F86D27D9C5ADCD90B41B /* Pods_OUASTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OUASTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D8459C70A57A30033777F0C /* Pods-OUASTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OUASTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OUASTests/Pods-OUASTests.release.xcconfig"; sourceTree = "<group>"; };
 		91BDD093923118CC5C546B42 /* Pods-OUASUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OUASUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OUASUITests/Pods-OUASUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				67F219321CF52DD200313047 /* GameStore.swift */,
+				67F219351CF5300C00313047 /* Game.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -445,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				674CEF3B1CD0516200AD084D /* AppDelegate.swift in Sources */,
+				67F219361CF5300C00313047 /* Game.swift in Sources */,
 				67F219331CF52DD200313047 /* GameStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				674CEF501CD0516200AD084D /* OUASTests.swift in Sources */,
+				67F219371CF5300C00313047 /* Game.swift in Sources */,
 				67F219341CF52DD200313047 /* GameStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

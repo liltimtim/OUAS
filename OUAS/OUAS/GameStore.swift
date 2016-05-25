@@ -42,4 +42,20 @@ class GameStore: NSObject {
             }
         }
     }
+    
+    func startNewGame() {
+        
+    }
+    
+    func endGame() {
+        
+    }
+    
+    func updateGameContent() {
+        
+    }
+    
+    func joinGame() {
+        
+    }
 }
