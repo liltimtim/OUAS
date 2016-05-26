@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="6Ka-Jg-FdX">
+            <objects>
+                <viewController id="pgP-eA-q6l" customClass="SplashViewController" customModule="OUAS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v7W-HW-URx"/>
+                        <viewControllerLayoutGuide type="bottom" id="pxN-hG-17c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FnM-ws-Lxr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="rmb-i8-KYe" kind="presentation" identifier="showApp" id="EGF-b5-x89"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wSS-wG-v8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="238" y="247"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="ELj-F2-Yxs">
+            <objects>
+                <viewController id="rRi-06-8vR" customClass="SignUpViewController" customModule="OUAS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ehy-MZ-Tt9"/>
+                        <viewControllerLayoutGuide type="bottom" id="WIu-8v-77J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kEf-8h-fvL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="rmb-i8-KYe" kind="presentation" identifier="showApp" id="obl-hN-SnN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dTV-Kc-zXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1565" y="247"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="fb2-GU-Xjb">
+            <objects>
+                <viewController id="vtN-ld-Haw" customClass="LoginViewController" customModule="OUAS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NbD-Py-DoW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bja-2x-IXg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jrq-aU-oaM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ih-wH-mgD">
+                                <rect key="frame" x="256" y="209" width="88" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UbB-dO-7ov">
+                                <rect key="frame" x="258" y="247" width="84" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuH-Mf-bdz">
+                                <rect key="frame" x="281" y="285" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginPressed:" destination="vtN-ld-Haw" eventType="touchUpInside" id="CTW-DO-zyB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UbB-dO-7ov" firstAttribute="centerX" secondItem="jrq-aU-oaM" secondAttribute="centerX" id="3ky-bT-kWO"/>
+                            <constraint firstItem="0Ih-wH-mgD" firstAttribute="centerX" secondItem="jrq-aU-oaM" secondAttribute="centerX" id="GuJ-KQ-kp5"/>
+                            <constraint firstItem="vuH-Mf-bdz" firstAttribute="centerY" secondItem="jrq-aU-oaM" secondAttribute="centerY" id="ISf-5I-3CX"/>
+                            <constraint firstItem="vuH-Mf-bdz" firstAttribute="top" secondItem="UbB-dO-7ov" secondAttribute="bottom" constant="8" id="NOg-U4-4xe"/>
+                            <constraint firstItem="UbB-dO-7ov" firstAttribute="top" secondItem="0Ih-wH-mgD" secondAttribute="bottom" constant="8" id="Q3r-aQ-Zve"/>
+                            <constraint firstItem="vuH-Mf-bdz" firstAttribute="centerX" secondItem="jrq-aU-oaM" secondAttribute="centerX" id="VR0-Rr-hUW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="passwordField" destination="UbB-dO-7ov" id="ldP-Pi-iaC"/>
+                        <outlet property="usernameField" destination="0Ih-wH-mgD" id="jHH-l5-DEN"/>
+                        <segue destination="rmb-i8-KYe" kind="presentation" identifier="showApp" id="NfC-13-XKz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hg8-Xc-cU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901" y="247"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="ewQ-nQ-TJT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="rmb-i8-KYe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="80B-cT-YlA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901" y="721"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="NfC-13-XKz"/>
+    </inferredMetricsTieBreakers>
+</document>
