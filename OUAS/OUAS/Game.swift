@@ -13,7 +13,11 @@ class Game: NSObject {
     private(set) var title : String!
     private(set) var owner : PFUser!
     private(set) var id : String!
-    private(set) var isActive : Bool!
+    private(set) var isActive : Bool! {
+        didSet {
+            object["isActive"] = isActive
+        }
+    }
     
     private override init () { super.init() }
     
@@ -26,8 +30,45 @@ class Game: NSObject {
         self.isActive = isActive
     }
     
+    
     func toPFObject() -> PFObject {
         return object
+    }
+    
+    func endGame(completion:(success:Bool, error:NSError?)->Void) {
+        if let user = PFUser.currentUser() {
+            if user.objectId == owner.objectId {
+                isActive = false
+                toPFObject().saveInBackgroundWithBlock({ (success, error) in
+                    completion(success: success, error: error)
+                })
+            } else {
+                completion(success: false, error: NSError(domain: "Game", code: 0, userInfo: ["error":"You are not the owner of this game"]))
+            }
+        } else {
+            completion(success: false, error: NSError(domain: "Game", code: 0, userInfo: ["error":"No User object found"]))
+        }
+    }
+    
+    func postNewContent(withContent story:String, completion:(success:Bool, error:NSError?)->Void) {
+        let content = GContent(withOwner: owner, withContent: story, withGame: self)
+        content.toPFObject().saveInBackgroundWithBlock { (success, error) in
+            completion(success: success, error: error)
+        }
+    }
+    
+    static func createGame(withTitle title:String, withOwner owner:PFUser, completion:(game:Game?, error:NSError?)->Void) {
+        let object = PFObject(className: "Game")
+        object["title"] = title
+        object["owner"] = owner
+        object["isActive"] = true
+        object.saveInBackgroundWithBlock { (success, error) in
+            if success {
+                completion(game: Game.initWithObject(object), error: nil)
+            } else {
+                completion(game: nil, error: error)
+            }
+        }
     }
     
     static func initWithObject(object:PFObject) -> Game? {

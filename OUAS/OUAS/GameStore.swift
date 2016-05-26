@@ -43,19 +43,35 @@ class GameStore: NSObject {
         }
     }
     
-    func startNewGame() {
-        
-    }
-    
-    func endGame() {
-        
-    }
-    
-    func updateGameContent() {
-        
+    func updateGameContent(withContent content:GContent, completion:(success:Bool, error:NSError?)->Void) {
+        content.toPFObject().saveInBackgroundWithBlock { (success, error) in
+            completion(success: success, error: error)
+        }
     }
     
     func joinGame() {
         
+    }
+    
+    func getActiveGames(completion:(games:[Game]?, error:NSError?)->Void) {
+        let query = PFQuery(className: "Game")
+        query.whereKey("isActive", equalTo: true)
+        query.findObjectsInBackgroundWithBlock { (objects, error) in
+            if error == nil {
+                if objects != nil {
+                    var games = [Game]()
+                    for object in objects! {
+                        if let game = Game.initWithObject(object) {
+                            games.append(game)
+                        }
+                    }
+                    completion(games: games, error: nil)
+                } else {
+                    completion(games: nil, error: NSError(domain: "GameStore", code: 0, userInfo: ["error":"No active games found"]))
+                }
+            } else {
+                completion(games: nil, error: error)
+            }
+        }
     }
 }
