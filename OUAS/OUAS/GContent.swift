@@ -20,6 +20,13 @@ class GContent: NSObject {
         self.game = game
     }
     
+    static func fromPFObject(object:PFObject?) -> GContent? {
+        guard let owner = object?["owner"] as? PFUser, content = object?["content"] as? String else { return nil }
+        guard let gameObject = object?["game"] as? PFObject else { return nil }
+        guard let game = Game.initWithObject(gameObject) else { return nil }
+        return GContent(withOwner: owner, withContent: content, withGame: game)
+    }
+    
     func toPFObject() -> PFObject {
         let object = PFObject(className: "Content")
         object["owner"] = owner

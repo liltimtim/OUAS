@@ -35,10 +35,21 @@
                     <navigationItem key="navigationItem" title="Stories" id="kgq-Ns-lMD">
                         <barButtonItem key="rightBarButtonItem" title="New Story" id="18V-hw-3dV"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="2ka-WQ-5dW" kind="presentation" identifier="showGame" id="eIk-IB-w9y"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wru-se-BJi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1470" y="131"/>
+            <point key="canvasLocation" x="1428" y="131"/>
+        </scene>
+        <!--MainStory-->
+        <scene sceneID="kFJ-ne-O21">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainStory" id="2ka-WQ-5dW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="72L-NM-uuk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2041" y="131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="T9s-To-VUc">

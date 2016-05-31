@@ -57,6 +57,27 @@ class Game: NSObject {
         }
     }
     
+    func getGameContent(completion:(content:[GContent], error:NSError?)->Void) {
+        let query = PFQuery(className: "Content")
+        query.whereKey("game", equalTo: toPFObject())
+        query.findObjectsInBackgroundWithBlock { (objects, error) in
+            if error == nil {
+                print(objects)
+                var contents = [GContent]()
+                if objects != nil {
+                    for object in objects! {
+                        if let content = GContent.fromPFObject(object) {
+                            contents.append(content)
+                        }
+                    }
+                }
+                completion(content: contents, error: nil)
+            } else {
+                completion(content: [GContent](), error: error)
+            }
+        }
+    }
+    
     static func createGame(withTitle title:String, withOwner owner:PFUser, completion:(game:Game?, error:NSError?)->Void) {
         let object = PFObject(className: "Game")
         object["title"] = title

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		52EBE99A951B3FA49A177059 /* Pods_OUASUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3FE2723D202FA672C2B7E4 /* Pods_OUASUITests.framework */; };
 		5A0FC12EE81D16136388E665 /* Pods_OUAS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644AF3DF2A7F3FE5AEB60B36 /* Pods_OUAS.framework */; };
+		670039771CFE532D00EB2ADF /* MainStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670039761CFE532D00EB2ADF /* MainStory.storyboard */; };
+		6700397A1CFE538D00EB2ADF /* StorybookPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670039791CFE538D00EB2ADF /* StorybookPageViewController.swift */; };
+		6700397C1CFE5A0700EB2ADF /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6700397B1CFE5A0700EB2ADF /* LoadingViewController.swift */; };
 		674CEF3B1CD0516200AD084D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674CEF3A1CD0516200AD084D /* AppDelegate.swift */; };
 		674CEF421CD0516200AD084D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 674CEF411CD0516200AD084D /* Assets.xcassets */; };
 		674CEF451CD0516200AD084D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 674CEF431CD0516200AD084D /* LaunchScreen.storyboard */; };
@@ -52,6 +55,9 @@
 		1FACDFA5C5ED8B891B77BE15 /* Pods-OUASUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OUASUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OUASUITests/Pods-OUASUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A3FE2723D202FA672C2B7E4 /* Pods_OUASUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OUASUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		644AF3DF2A7F3FE5AEB60B36 /* Pods_OUAS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OUAS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		670039761CFE532D00EB2ADF /* MainStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStory.storyboard; sourceTree = "<group>"; };
+		670039791CFE538D00EB2ADF /* StorybookPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorybookPageViewController.swift; sourceTree = "<group>"; };
+		6700397B1CFE5A0700EB2ADF /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		674CEF371CD0516200AD084D /* OUAS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OUAS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		674CEF3A1CD0516200AD084D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		674CEF411CD0516200AD084D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,6 +126,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		670039781CFE537500EB2ADF /* Reader View */ = {
+			isa = PBXGroup;
+			children = (
+				670039791CFE538D00EB2ADF /* StorybookPageViewController.swift */,
+				6700397B1CFE5A0700EB2ADF /* LoadingViewController.swift */,
+			);
+			name = "Reader View";
+			sourceTree = "<group>";
+		};
 		674CEF2E1CD0516200AD084D = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +201,7 @@
 		67F2193B1CF67BEF00313047 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				670039781CFE537500EB2ADF /* Reader View */,
 				67F219471CF680C900313047 /* Login Views */,
 				67F2193E1CF67EE200313047 /* Active Stories View */,
 			);
@@ -216,6 +232,7 @@
 				674CEF431CD0516200AD084D /* LaunchScreen.storyboard */,
 				67F2192C1CF528EF00313047 /* Main.storyboard */,
 				67F219451CF6808D00313047 /* Login.storyboard */,
+				670039761CFE532D00EB2ADF /* MainStory.storyboard */,
 			);
 			name = storyboard;
 			sourceTree = "<group>";
@@ -366,6 +383,7 @@
 				67F2192D1CF528EF00313047 /* Main.storyboard in Resources */,
 				67F219431CF67EFF00313047 /* ActiveStoryCell.xib in Resources */,
 				674CEF451CD0516200AD084D /* LaunchScreen.storyboard in Resources */,
+				670039771CFE532D00EB2ADF /* MainStory.storyboard in Resources */,
 				67F219461CF6808D00313047 /* Login.storyboard in Resources */,
 				674CEF421CD0516200AD084D /* Assets.xcassets in Resources */,
 			);
@@ -523,6 +541,8 @@
 				67F219391CF6710F00313047 /* GContent.swift in Sources */,
 				67F2194D1CF681F300313047 /* SignUpViewController.swift in Sources */,
 				67F219491CF680DB00313047 /* SplashViewController.swift in Sources */,
+				6700397C1CFE5A0700EB2ADF /* LoadingViewController.swift in Sources */,
+				6700397A1CFE538D00EB2ADF /* StorybookPageViewController.swift in Sources */,
 				67F219421CF67EFF00313047 /* ActiveStoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

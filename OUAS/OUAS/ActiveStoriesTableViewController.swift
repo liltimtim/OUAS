@@ -48,7 +48,15 @@ class ActiveStoriesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print(indexPath)
-        
+        self.performSegueWithIdentifier("showGame", sender: indexPath)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let destination = segue.destinationViewController as? LoadingViewController {
+            if let index = sender as? NSIndexPath {
+                destination.currentGame = activeGames[index.row]
+            }
+        }
     }
 }
 
